@@ -7,7 +7,7 @@ import os
 def dir_files(directory):
     for file in os.listdir(directory):
         if file.endswith(".txt"):
-            print(os.path.join("C:/Users/clintonngan/.spyder-py3",file))
+            print(os.path.join(file))
 
 file_names = dir_files("C:/Users/clintonngan/.spyder-py3")
 
