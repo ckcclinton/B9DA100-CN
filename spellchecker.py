@@ -4,14 +4,14 @@
 # we read the file and strip out the file endings
 
 import os
-for file in os.listdir("C:/Users/clintonngan/.spyder-py3"):
-    if file.endswith(".txt"):
-        print(os.path.join("C:/Users/clintonngan/.spyder-py3", file))
-        
-def load_files(file_names):
-    lines = 
-        
+def dir_files(directory):
+    for file in os.listdir(directory):
+        if file.endswith(".txt"):
+            print(os.path.join(file))
 
+dir_files("C:/Users/clintonngan/.spyder-py3")
+
+# Demo below
 def load_file(file_name):
     # assign a variable called words
     words = open(file_name).readlines()
