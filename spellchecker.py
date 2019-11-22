@@ -2,6 +2,10 @@
 # glob.glob
 # to begin we start with a list of words in a file called spell.words
 # we read the file and strip out the file endings
+import glob
+glob.glob("C:/Users/clintonngan/.spyder-py3/*.txt")
+import os
+os.listdir("/Users/clintonngan/.spyder-py3/")
 def load_file(file_name):
     # assign a variable called words
     words = open(file_name).readlines()
