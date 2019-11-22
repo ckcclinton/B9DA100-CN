@@ -7,15 +7,16 @@ import os
 def dir_files(directory):
     for file in os.listdir(directory):
         if file.endswith(".txt"):
-            print(os.path.join(file))
+            print(os.path.join("C:/Users/clintonngan/.spyder-py3",file))
 
-dir_files("C:/Users/clintonngan/.spyder-py3")
+file_names = dir_files("C:/Users/clintonngan/.spyder-py3")
 
 def load_dir_files(file_names):
     lines_dir = open(file_names).readlines()
     return list(map(lambda x: x.strip().lower(), lines_dir))
 
 load_dir_files(file_names)
+
 
 # Demo below
 def load_file(file_name):
