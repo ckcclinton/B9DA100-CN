@@ -27,12 +27,13 @@ file_names = dir_files("C:/Users/clintonngan/.spyder-py3")
 # contents = load_dir_files(file_names)
 for item in file_names:
     contents = load_dir_files(item)
+    print('File Name: {0}'.format(item))
     for index, line in enumerate(contents):
         # print(f"Line {index}: {line} {item}")
         # print()
-        print('index {0}, Line: {1}, File Name: {2}'.format(index, line, item))
+        print('index {0}, Line: {1}'.format(index, line))
     print()
-    
+
 #print(load_dir_files(file_names[0]), "\n")
     
 
