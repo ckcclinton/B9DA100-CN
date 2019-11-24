@@ -8,6 +8,7 @@ Created on Sat Nov 23 14:48:23 2019
 
 import os
 from spellchecker import SpellChecker
+sc = SpellChecker()
 
 def dir_files(directory):
     file_names = []
@@ -23,17 +24,19 @@ def load_dir_files(file_names):
 
 file_names = dir_files("C:/Users/clintonngan/.spyder-py3")
 
-contents = load_dir_files(file_names[2])
-for index, line in enumerate(contents):
-    print(f"Line {index}: {line}")
-    print()
+# contents = load_dir_files(file_names)
+for index in range(len(file_names)):
+    contents = load_dir_files(file_names[index])
+    for index, line in enumerate(contents):
+        print(f"Line {index}: {line}")
+        print()
+        # print('index {0}, Line: {1}'.format(index, line))
     
 #print(load_dir_files(file_names[0]), "\n")
     
-sc = SpellChecker()
-sc.load_words('spell.words')
-for index, line in enumerate(contents):
-    word_list = sc.check_words(line, index)
-    if(len(word_list) != 0):
-        print(word_list)
 
+    sc.load_words('spell.words')
+    for index, line in enumerate(contents):
+        word_list = sc.check_words(line, index)
+        if(len(word_list) != 0):
+            print(word_list)
