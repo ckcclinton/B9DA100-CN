@@ -2,7 +2,7 @@
 # glob.glob
 # to begin we start with a list of words in a file called spell.words
 # we read the file and strip out the file endings
-'''
+
 import os
 def dir_files(directory):
     for file in os.listdir(directory):
@@ -16,7 +16,7 @@ def load_dir_files(file_names):
     return list(map(lambda x: x.strip().lower(), lines_dir))
 
 load_dir_files(file_names)
-'''
+
 
 # Demo below
 def load_file(file_name):
@@ -81,6 +81,7 @@ class SpellChecker(object):
                         'pos':caret_position+1, 'type': 'profanity'})
             caret_position += len(word) + 1
         # return list of dictionary
+        
         return failed_words
 
     def check_document(self, file_name):
@@ -92,9 +93,35 @@ class SpellChecker(object):
                 self.check_words(sentence, index))
         return failed_words_in_sentences
 
+
+#def dir_files(directory):
+#    for file in os.listdir(directory):
+#        if file.endswith(".txt"):
+#            return list(os.path.join(file))
+'''
+def dir_files(directory):
+    file_names = []
+    for file in os.listdir(directory):
+        if file.endswith(".txt"):
+            file_names.append(file)
+    
+    return file_names
+
+def load_dir_files(file_names):
+    lines_dir = open(file_names).readlines()
+    return list(map(lambda x: x.strip().lower(), lines_dir))
+'''
+
 # code now runs here
-if __name__ == '__main__':
+#if __name__ == '__main__':
  
+#import os
+#file_names = dir_files("C:/Users/clintonngan/.spyder-py3")
+#print(file_names[0])
+
+
+'''
+load_dir_files(file_names)
     words = load_file('spell.words')
     # now check if the word zygotic is a word
     print(check_word(words, 'zygotic'))
@@ -107,3 +134,4 @@ if __name__ == '__main__':
     print(spell_checker.check_word('zygotic'))
     print(spell_checker.check_word('mistasdas'))
     print(spell_checker.check_words('zygotic mistasdas elementary'))
+'''
