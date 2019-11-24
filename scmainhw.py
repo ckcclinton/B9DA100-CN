@@ -4,8 +4,6 @@ Created on Sat Nov 23 14:48:23 2019
 
 @author: clintonngan
 """
-
-
 import os
 from spellchecker import SpellChecker
 
