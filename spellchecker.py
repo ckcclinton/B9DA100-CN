@@ -2,7 +2,7 @@
 # glob.glob
 # to begin we start with a list of words in a file called spell.words
 # we read the file and strip out the file endings
-
+'''
 import os
 def dir_files(directory):
     for file in os.listdir(directory):
@@ -16,7 +16,7 @@ def load_dir_files(file_names):
     return list(map(lambda x: x.strip().lower(), lines_dir))
 
 load_dir_files(file_names)
-
+'''
 
 # Demo below
 def load_file(file_name):
