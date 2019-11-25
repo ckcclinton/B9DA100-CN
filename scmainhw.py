@@ -41,6 +41,11 @@ for item in file_names:
 #print(load_dir_files(file_names[0]), "\n")  
     if language == "English":
         sc.load_words('spell.words')
+        for index, line in enumerate(contents):
+            word_list = sc.check_words(line, index)
+            if(len(word_list) != 0):
+                print(word_list)
+        print()
     else:
         sc.load_words('spanish.spell.words')
         for index, line in enumerate(contents):
