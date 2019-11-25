@@ -2,7 +2,7 @@
 # glob.glob
 # to begin we start with a list of words in a file called spell.words
 # we read the file and strip out the file endings
-
+'''
 import os
 def dir_files(directory):
     for file in os.listdir(directory):
@@ -16,7 +16,7 @@ def load_dir_files(file_names):
     return list(map(lambda x: x.strip().lower(), lines_dir))
 
 load_dir_files(file_names)
-
+'''
 
 # Demo below
 def load_file(file_name):
@@ -55,7 +55,7 @@ class SpellChecker(object):
 
 # check for "fuck","shit" and ignore them, then return rest
     def check_profanities(self, word):
-        return word not in ['fuck', 'shit', 'bitch']
+        return word not in ['fuck', 'shit']
 
 # stripping all symbols plus lower case
     def check_word(self, word):
@@ -69,16 +69,17 @@ class SpellChecker(object):
         # loop thru words 1 by 1 
         for word in words_to_check:
             # Call the check_word func and check against dict
-            # If check fails, store dict into list
-            if not self.check_word(word):
-                failed_words.append(
-                    {'word':word, 'line':index+1,
-                        'pos':caret_position+1, 'type': 'spelling'})
             # same shit as above but checking for profanity now
             if not self.check_profanities(word):
                 failed_words.append(
                     {'word':word, 'line':index+1,
                         'pos':caret_position+1, 'type': 'profanity'})
+            # If check fails, store dict into list
+            if not self.check_word(word):
+                failed_words.append(
+                    {'word':word, 'line':index+1,
+                        'pos':caret_position+1, 'type': 'spelling'})
+            
             caret_position += len(word) + 1
         # return list of dictionary
         
