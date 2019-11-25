@@ -12,7 +12,7 @@ sc = SpellChecker()
 # ENTER DIRECTORY BELOW
 directory = "C:/Users/clintonngan/.spyder-py3"
 # I cant find other good dictionaries in WORD file but below's the input
-# 1st Opt English and 2nd opt is Spanish
+# 1st option English and 2nd option is Spanish
 language = "English"
 
 def dir_files(directory):
@@ -38,9 +38,7 @@ for item in file_names:
         # print()
         print('index {0}, Line: {1}'.format(index, line))
     print()
-
-#print(load_dir_files(file_names[0]), "\n")
-    
+#print(load_dir_files(file_names[0]), "\n")  
     if language == "English":
         sc.load_words('spell.words')
     else:
