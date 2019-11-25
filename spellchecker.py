@@ -121,18 +121,17 @@ def load_dir_files(file_names):
 #print(file_names[0])
 
 
-'''
-load_dir_files(file_names)
-    words = load_file('spell.words')
-    # now check if the word zygotic is a word
-    print(check_word(words, 'zygotic'))
-    print(check_word(words, 'mistasdas'))
-    print(check_words(words, 'zygotic mistasdas elementary'))
-    
-    spell_checker = SpellChecker()
-    spell_checker.load_words('spell.words')
-    # now check if the word zygotic is a word
-    print(spell_checker.check_word('zygotic'))
-    print(spell_checker.check_word('mistasdas'))
-    print(spell_checker.check_words('zygotic mistasdas elementary'))
-'''
+
+
+words = load_file('spell.words')
+# now check if the word zygotic is a word
+print(check_word(words, 'zygotic'))
+print(check_word(words, 'mistasdas'))
+print(check_words(words, 'zygotic mistasdas elementary'))
+
+spell_checker = SpellChecker()
+spell_checker.load_words('spell.words')
+# now check if the word zygotic is a word
+print(spell_checker.check_word('zygotic'))
+print(spell_checker.check_word('mistasdas'))
+print(spell_checker.check_words('zygotic mistasdas elementary'))
