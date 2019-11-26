@@ -55,7 +55,7 @@ class SpellChecker(object):
 
 # check for "fuck","shit" and ignore them, then return rest
     def check_profanities(self, word):
-        return word not in ['fuck', 'shit']
+        return word not in ['fuck', 'shit','naruto']
 
 # stripping all symbols plus lower case
     def check_word(self, word):
@@ -122,7 +122,7 @@ def load_dir_files(file_names):
 
 
 
-
+load_dir_files(file_names)
 words = load_file('spell.words')
 # now check if the word zygotic is a word
 print(check_word(words, 'zygotic'))
