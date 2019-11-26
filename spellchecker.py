@@ -55,7 +55,7 @@ class SpellChecker(object):
 
 # check for "fuck","shit" and ignore them, then return rest
     def check_profanities(self, word):
-        return word not in ['fuck', 'shit','naruto']
+        return word not in ['fuck', 'shit']
 
 # stripping all symbols plus lower case
     def check_word(self, word):
