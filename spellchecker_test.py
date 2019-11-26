@@ -16,7 +16,8 @@ class TestSpellChecker(unittest.TestCase):
         self.assertTrue(len(self.spellChecker.words) == 53751)
        
     def test_spell_checker(self):
-        self.assertTrue(self.spellChecker.check_profanity('fuck'))
+        # Check the list of profanities word
+        self.assertTrue(self.spellChecker.check_profanities(['fuck','shit']))
         # Check the word to see if it's true or false (assert)
         self.assertTrue(self.spellChecker.check_word('zygotic'))
         self.assertFalse(self.spellChecker.check_word('mistasdas'))
