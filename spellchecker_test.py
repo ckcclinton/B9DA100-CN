@@ -17,7 +17,7 @@ class TestSpellChecker(unittest.TestCase):
        
     def test_spell_checker(self):
         # Check the list of profanities word
-        self.assertTrue(self.spellChecker.check_profanities(['fuck','shit']))
+        # self.assertTrue(self.spellChecker.check_profanities(['fuck','shit']))
         # Check the word to see if it's true or false (assert)
         self.assertTrue(self.spellChecker.check_word('zygotic'))
         self.assertFalse(self.spellChecker.check_word('mistasdas'))
@@ -29,6 +29,8 @@ class TestSpellChecker(unittest.TestCase):
         self.assertTrue(len(self.spellChecker.check_words('Our first correct sentence.')) == 0)
         # Updating the failed wrds dict manually
         failed_words = self.spellChecker.check_words('zygotic mistasdas spelllleeeing elementary')
+        failed_profanities = self.spellChecker.check_profanities('naruto')
+        self.assertTrue(failed_profanities not in ['fuck','shit'])
         
         # re-testing said dict
         self.assertTrue(len(failed_words) == 2)
