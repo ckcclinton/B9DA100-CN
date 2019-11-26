@@ -13,9 +13,10 @@ class TestSpellChecker(unittest.TestCase):
         self.spellChecker.load_words('spell.words')
 # making sure the file has 53751 lines
     def test_dictionary_of_words(self):
-        self.assertTrue(len(self.spellChecker.words) == 53751) 
- 
+        self.assertTrue(len(self.spellChecker.words) == 53751)
+       
     def test_spell_checker(self):
+        self.assertTrue(self.spellChecker.check_profanity('fuck'))
         # Check the word to see if it's true or false (assert)
         self.assertTrue(self.spellChecker.check_word('zygotic'))
         self.assertFalse(self.spellChecker.check_word('mistasdas'))
