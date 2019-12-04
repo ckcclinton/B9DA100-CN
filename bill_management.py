@@ -5,7 +5,12 @@ Created on Wed Dec  4 18:40:08 2019
 @author: clintonngan
 """
 def read_bills():
-    return [line.strip().split(',') for line in open('bills.csv') if len(line) > 1]
+    return [[col.strip() for col in line.strip().split(',')] for line in open('bills.csv') if len(line) > 1]
+
+def write_bills(bills):
+    bill_file = open('bills.csv', 'w')
+    for bill in bills:
+        bill_file.write(', '.join(bill) + '\n')
 
 def display_menu():
     print('Hello, Welcome to the Bill Management company')
@@ -26,6 +31,7 @@ def main():
     bills = read_bills()
     display_menu()
     process_choice(bills)
+    write_bills(bills)
     
 if __name__ == '__main__':
     main()
