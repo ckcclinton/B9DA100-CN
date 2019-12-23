@@ -16,6 +16,9 @@ def display_menu():
     print('Hello, Welcome to the Bill Management company')
     print('1: View Bills\n2: Insert a Bill\n3: Reports\n4: T&Cs\n5: Exit')
     
+def display_submenu():
+    print('1: Summary\n2: Top Popular Companies\n3: Bills by Date\n4: Highest Amount\n5: Total Bills\n6: Average Spend by Date\n7: Average Time b/e Bills')
+    
 def view_bills(bills):
     for bill in bills:
         print(bill[0], bill[1], bill[2], bill[3], bill[4], bill[5], bill[6])
@@ -28,7 +31,7 @@ def process_choice(bills):
         if choice == '2':
             write_bills(bills)
         if choice == '3':
-            print('1: Summary\n2: Top Popular Companies\n3: Bills by Date\n4: Highest Amount\n5: Total Bills\n6: Average Spend by Date\n7: Average Time b/e Bills')
+            display_submenu()
         choice = input('Please enter an option:')
 
 def main():
