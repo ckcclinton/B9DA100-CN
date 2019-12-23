@@ -35,23 +35,29 @@ def process_choice(bills):
         if choice == '2':
             write_bills(bills)
         if choice == '3':
-            display_submenu()
+            def subprocess_choice(bills):
+                display_submenu()
+                choice = input('Please enter an option:')
+                while choice != '8':
+                    if choice == '1':
+                        print('Summary')
+                    if choice == '2':
+                        print('Top Popular Companies')
+                    if choice == '3':
+                        print('Bills by Date')
+                    if choice == '4':
+                        print('Highest Amount')
+                    if choice == '5':
+                        count_bills
+                    if choice == '6':
+                        print('Average Spend by Date')
+                    if choice == '7':
+                        print('Average Time b/e Bills')
+                    choice = input('Please enter an option:')
         if choice == '4':
             count_bills(bills)
         choice = input('Please enter an option:')
         
-def subprocess_choice(bills):
-    choice = input('Please enter an option:')
-    while choice != '5':
-        if choice == '1':
-            view_bills(bills)
-        if choice == '2':
-            write_bills(bills)
-        if choice == '3':
-            display_submenu()
-        if choice == '4':
-            count_bills(bills)
-        choice = input('Please enter an option:')
 
 def main():
     bills = read_bills()
