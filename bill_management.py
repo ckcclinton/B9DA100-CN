@@ -25,6 +25,8 @@ def process_choice(bills):
     while choice != '5':
         if choice == '1':
             view_bills(bills)
+        if choice == '2':
+            print("Bitch please")
         choice = input('Please enter an option:')
 
 def main():
