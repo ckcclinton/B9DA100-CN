@@ -20,6 +20,9 @@ def display_menu():
     print('Hello, Welcome to the Bill Management company')
     print('1: View Bills\n2: Insert a Bill\n3: Reports\n4: T&Cs\n5: Exit')
     
+def highest_bill(bills):
+    return(max(bills[4]))
+    
 def display_submenu():
     print('1: Summary\n2: Top Popular Companies\n3: Bills by Date\n4: Highest Amount\n5: Total Bills\n6: Average Spend by Date\n7: Average Time b/e Bills\n8: Exit')
     
@@ -38,7 +41,7 @@ def subprocess_choice(bills):
         if choice == '3':
             print('Bills by Date')
         if choice == '4':
-            print('Highest Amount')
+            highest_bill(bills)
         if choice == '5':
             count_bills(bills)
         if choice == '6':
