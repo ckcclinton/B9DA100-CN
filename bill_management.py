@@ -21,13 +21,26 @@ def display_menu():
     print('1: View Bills\n2: Insert a Bill\n3: Reports\n4: T&Cs\n5: Exit')
     
 def display_submenu():
-    print('1: Summary\n2: Top Popular Companies\n3: Bills by Date\n4: Highest Amount\n5: Total Bills\n6: Average Spend by Date\n7: Average Time b/e Bills')
+    print('1: Summary\n2: Top Popular Companies\n3: Bills by Date\n4: Highest Amount\n5: Total Bills\n6: Average Spend by Date\n7: Average Time b/e Bills\n8: Exit')
     
 def view_bills(bills):
     for bill in bills:
         print(bill[0], bill[1], bill[2], bill[3], bill[4], bill[5], bill[6])
 
 def process_choice(bills):
+    choice = input('Please enter an option:')
+    while choice != '5':
+        if choice == '1':
+            view_bills(bills)
+        if choice == '2':
+            write_bills(bills)
+        if choice == '3':
+            display_submenu()
+        if choice == '4':
+            count_bills(bills)
+        choice = input('Please enter an option:')
+        
+def subprocess_choice(bills):
     choice = input('Please enter an option:')
     while choice != '5':
         if choice == '1':
