@@ -57,7 +57,7 @@ def process_choice(bills):
         if choice == '3':
             subprocess_choice(bills)
         if choice == '4':
-            count_bills(bills)
+            print('T&Cs')
         choice = input('Please enter an option:')
         
 
