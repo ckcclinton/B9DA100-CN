@@ -26,7 +26,9 @@ def process_choice(bills):
         if choice == '1':
             view_bills(bills)
         if choice == '2':
-            print("Bitch please")
+            write_bills(bills)
+        if choice == '3':
+            print('1: Summary\n2: Top Popular Companies\n3: Bills by Date\n4: Highest Amount\n5: Total Bills\n6: Average Spend by Date\n7: Average Time b/e Bills')
         choice = input('Please enter an option:')
 
 def main():
