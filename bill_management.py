@@ -23,7 +23,8 @@ def display_menu():
     print('1: View Bills\n2: Insert a Bill\n3: Reports\n4: T&Cs\n5: Exit')
     
 def highest_bill(bills):
-    print(max(bills[5]))
+    for bill in bills:
+        print(max(bill[5]))
 
 def plot_company(bills):
     bills.groupby(bills[0]).sort_values(ascending=False)[:5].plot.bar()
@@ -65,7 +66,7 @@ def process_choice(bills):
         if choice == '3':
             subprocess_choice(bills)
         if choice == '4':
-            print('T&Cs')
+            plot_company(bills)
         choice = input('Please enter an option:')
         
 
