@@ -11,7 +11,11 @@ def write_bills(bills):
     bill_file = open('bills.csv', 'w')
     for bill in bills:
         bill_file.write(', '.join(bill) + '\n')
-
+        
+def count_bills(bills):
+    row_count = sum(1 for row in bills)
+    print('Bills to date: ', row_count)
+        
 def display_menu():
     print('Hello, Welcome to the Bill Management company')
     print('1: View Bills\n2: Insert a Bill\n3: Reports\n4: T&Cs\n5: Exit')
@@ -32,6 +36,8 @@ def process_choice(bills):
             write_bills(bills)
         if choice == '3':
             display_submenu()
+        if choice == '4':
+            count_bills(bills)
         choice = input('Please enter an option:')
 
 def main():
