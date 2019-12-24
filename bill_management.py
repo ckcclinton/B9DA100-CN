@@ -36,14 +36,19 @@ def most_popular_company(bills):
 def highest_bill(bills):
     with open('bills.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
-        bill_list = []
+        credit_bill_list = []
+        debit_bill_list = []
         for row in csv_reader:
             for column, item in enumerate(row):
-                if column == 5:
-                    converted_bill = float(item)
-                    bill_list.append(converted_bill)
-        max_bill = max(bill_list)
-        print('Highest bill to date is: {0}'.format(max_bill))
+                if column == 5 and item == 'credit':
+                    converted_credit_bill = float(item)
+                    credit_bill_list.append(converted_credit_bill)
+                if column == 5 and item == 'debit':
+                    converted_debit_bill = float(item)
+                    debit_bill_list.append(converted_debit_bill)
+        max_credit_bill = max(credit_bill_list)
+        max_debit_bill = max(debit_bill_list)
+        print('Highest credit & debit bill to date is: {0}'.format(max_credit_bill).format(max_debit_bill))
 
 def plot_company(bills):
     for bill in bills:
