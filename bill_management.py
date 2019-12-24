@@ -56,8 +56,7 @@ def highest_bill(bills):
         print('Highest credit & debit bill to date is: {0}'.format(max_credit_bill).format(max_debit_bill))
 
 def plot_company(bills):
-    for bill in bills:
-        bills.groupby('provider').sort_values(ascending=False)[:5].plot.bar()
+    bills.groupby('provider').sort_values(ascending=False)[:5].plot.bar()
     
 def display_submenu():
     print('1: Summary\n2: Top Popular Companies\n3: Bills by Date\n4: Highest Amount\n5: Total Bills\n6: Average Spend by Date\n7: Average Time b/e Bills\n8: Exit')
