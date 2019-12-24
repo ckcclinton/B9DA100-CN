@@ -9,10 +9,10 @@ import pandas, csv
 def read_bills():
     return [[col.strip() for col in line.strip().split(',')] for line in open('bills.csv') if len(line) > 1]
 
-def write_bills(bills):
-    bill_file = open('bills.csv', 'w')
-    for bill in bills:
-        bill_file.write(', '.join(bill) + '\n')
+def insert_bills(bills):
+    with open('bills.csv', 'a') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(input(["Provider","Customer","Year","Month","Day","Amount","debit/credit"]))
         
 def count_bills(bills):
     row_count = sum(1 for row in bills)
@@ -40,10 +40,10 @@ def highest_bill(bills):
         debit_bill_list = []
         for row in csv_reader:
             for column, item in enumerate(row):
-                if column == 5 and item == 'credit':
+                if column == 5 and column[6] == 'credit':
                     converted_credit_bill = float(item)
                     credit_bill_list.append(converted_credit_bill)
-                if column == 5 and item == 'debit':
+                if column == 5 and column[6] == 'debit':
                     converted_debit_bill = float(item)
                     debit_bill_list.append(converted_debit_bill)
         max_credit_bill = max(credit_bill_list)
@@ -87,7 +87,7 @@ def process_choice(bills):
         if choice == '1':
             view_bills(bills)
         if choice == '2':
-            write_bills(bills)
+            insert_bills(bills)
         if choice == '3':
             subprocess_choice(bills)
         if choice == '4':
@@ -99,7 +99,7 @@ def main():
     bills = read_bills()
     display_menu()
     process_choice(bills)
-    write_bills(bills)
+    insert_bills(bills)
     
 if __name__ == '__main__':
     main()
