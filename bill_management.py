@@ -4,7 +4,7 @@ Created on Wed Dec  4 18:40:08 2019
 
 @author: clintonngan
 """
-import pandas, csv
+import pandas, csv, datatable
 
 def read_bills():
     return [[col.strip() for col in line.strip().split(',')] for line in open('bills.csv') if len(line) > 1]
@@ -21,6 +21,11 @@ def count_bills(bills):
 def display_menu():
     print('Hello, Welcome to the Bill Management company')
     print('1: View Bills\n2: Insert a Bill\n3: Reports\n4: T&Cs\n5: Exit')
+
+def summary(bills):
+    #text_csv=pandas.read_csv('bills.csv')
+    #df=pandas.DataFrame(text_csv)
+    #print(df.describe())
     
 def most_popular_company(bills):
     with open('bills.csv') as csv_file:
@@ -66,7 +71,7 @@ def subprocess_choice(bills):
     choice = input('Please enter an option:')
     while choice != '8':
         if choice == '1':
-            print('Summary')
+            summary(bills)
         if choice == '2':
             most_popular_company(bills)
         if choice == '3':
@@ -99,7 +104,6 @@ def main():
     bills = read_bills()
     display_menu()
     process_choice(bills)
-    insert_bills(bills)
     
 if __name__ == '__main__':
     main()
