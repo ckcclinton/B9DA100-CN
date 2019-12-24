@@ -78,17 +78,17 @@ def highest_bill(bills):
 
 def plot_company(bills):
     bills = pandas.read_csv('bills.csv')
-    bills['provider'].value_counts().sort_values(ascending=True).plot.barh()
+    bills['provider'].value_counts().sort_values(ascending=True).plot.barh(title='# of bills by company')
     plt.show()
     
 def plot_billdate(bills):
     bills = pandas.read_csv('bills.csv')
-    bills['year'].value_counts().sort_index(ascending=True).plot.bar()
+    bills['year'].value_counts().sort_index(ascending=True).plot.bar(title='# of bills by year')
     plt.show()
     
 def plot_avgspend(bills):
     bills = pandas.read_csv('bills.csv')
-    bills.groupby("year").amount.mean().sort_index(ascending=True).plot.bar()
+    bills.groupby("year").amount.mean().sort_index(ascending=True).plot.bar(title='Average spend by year')
     plt.show()
     
 def display_submenu():
