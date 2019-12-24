@@ -10,9 +10,22 @@ def read_bills():
     return [[col.strip() for col in line.strip().split(',')] for line in open('bills.csv') if len(line) > 1]
 
 def insert_bills(bills):
-    with open('bills.csv', 'a') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(input(["Provider","Customer","Year","Month","Day","Amount","debit/credit"]))
+    with open('bills.csv', 'a') as csv_file:
+        csv_writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL) 
+        while (1):
+            provider = input('Please enter the name of the provider: ')
+            customer = input('Please enter the name of the customer: ')
+            year = input('Please enter the year of transaction: ')
+            month = input('Please enter the month of transaction: ')
+            day = input('Please enter the day of transaction: ')
+            amount = input('Please enter the bill amount: ')
+            card_type = input('Please enter the card Type (debit or credit only!): ')
+            csv_writer.writerow([provider, customer, year, month, day, amount, card_type])
+            reply = str(input('Do you still want to key in the transaction for another user? (y/n) ')).lower().strip()
+            if reply[0] == 'n':
+                break
+            elif reply[0] == 'y':
+                continue
         
 def count_bills(bills):
     row_count = sum(1 for row in bills)
