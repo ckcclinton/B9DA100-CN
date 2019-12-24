@@ -38,10 +38,9 @@ def display_menu():
 def summary(bills):
     text_csv=pandas.read_csv('bills.csv')
     df=pandas.DataFrame(text_csv)
-    #df.groupby('provider')
     grouped_df = df.groupby('year')
     for key, item in grouped_df:
-        print(grouped_df.get_group(key), "\n\n")
+        print(grouped_df.get_group(key), "\n")
     
 def most_popular_company(bills):
     with open('bills.csv') as csv_file:
