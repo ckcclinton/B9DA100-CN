@@ -4,7 +4,7 @@ Created on Wed Dec  4 18:40:08 2019
 
 @author: clintonngan
 """
-import pandas, csv
+import pandas, csv, matplotlib.pyplot as plt
 
 def read_bills():
     return [[col.strip() for col in line.strip().split(',')] for line in open('bills.csv') if len(line) > 1]
@@ -38,7 +38,10 @@ def display_menu():
 def summary(bills):
     text_csv=pandas.read_csv('bills.csv')
     df=pandas.DataFrame(text_csv)
-    df.groupby('provider')
+    #df.groupby('provider')
+    grouped_df = df.groupby('year')
+    for key, item in grouped_df:
+        print(grouped_df.get_group(key), "\n\n")
     
 def most_popular_company(bills):
     with open('bills.csv') as csv_file:
@@ -76,7 +79,8 @@ def highest_bill(bills):
 
 def plot_company(bills):
     bills = pandas.read_csv('bills.csv')
-    bills.groupby('provider').sort_values(ascending=False)[:5].plot.bar()
+    bills['provider'].value_counts().sort_index(ascending=True).plot.barh()
+    plt.show()
     
 def display_submenu():
     print('1: Summary\n2: Top Popular Companies\n3: Bills by Date\n4: Highest Amount\n5: Total Bills\n6: Average Spend by Date\n7: Average Time b/e Bills\n8: Exit')
@@ -93,6 +97,7 @@ def subprocess_choice(bills):
             summary(bills)
         if choice == '2':
             most_popular_company(bills)
+            plot_company(bills)
         if choice == '3':
             print('Bills by Date')
         if choice == '4':
@@ -115,7 +120,7 @@ def process_choice(bills):
         if choice == '3':
             subprocess_choice(bills)
         if choice == '4':
-            plot_company(bills)
+            print("Read T&Cs")
         choice = input('Please enter an option:')
         
 
