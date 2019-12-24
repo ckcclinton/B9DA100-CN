@@ -81,6 +81,11 @@ def plot_company(bills):
     bills['provider'].value_counts().sort_index(ascending=True).plot.barh()
     plt.show()
     
+def plot_billdate(bills):
+    bills = pandas.read_csv('bills.csv')
+    bills.drop(['month'], axis=1).plot.line(title='Bills by date')
+    plt.show()
+    
 def display_submenu():
     print('1: Summary\n2: Top Popular Companies\n3: Bills by Date\n4: Highest Amount\n5: Total Bills\n6: Average Spend by Date\n7: Average Time b/e Bills\n8: Exit')
     
@@ -98,7 +103,7 @@ def subprocess_choice(bills):
             most_popular_company(bills)
             plot_company(bills)
         if choice == '3':
-            print('Bills by Date')
+            plot_billdate(bills)
         if choice == '4':
             highest_bill(bills)
         if choice == '5':
