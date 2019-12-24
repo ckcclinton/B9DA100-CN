@@ -4,7 +4,7 @@ Created on Wed Dec  4 18:40:08 2019
 
 @author: clintonngan
 """
-import pandas
+import pandas, csv
 
 def read_bills():
     return [[col.strip() for col in line.strip().split(',')] for line in open('bills.csv') if len(line) > 1]
@@ -23,8 +23,8 @@ def display_menu():
     print('1: View Bills\n2: Insert a Bill\n3: Reports\n4: T&Cs\n5: Exit')
     
 def highest_bill(bills):
-    for bill in bills:
-        print(max(bill[5]))
+    with open(bills) as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
 
 def plot_company(bills):
     bills.groupby(bills[0]).sort_values(ascending=False)[:5].plot.bar()
