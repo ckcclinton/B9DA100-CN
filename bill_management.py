@@ -23,8 +23,16 @@ def display_menu():
     print('1: View Bills\n2: Insert a Bill\n3: Reports\n4: T&Cs\n5: Exit')
     
 def highest_bill(bills):
-    with open(bills) as csv_file:
+    with open('bills.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
+        bill_list = []
+        for row in csv_reader:
+            for column, item in enumerate(row):
+                if column == 5:
+                    converted_bill = float(item)
+                    bill_list.append(converted_bill)
+        max_bill = max(bill_list)
+        print('Highest bill to date is: {0}'.format(max_bill))
 
 def plot_company(bills):
     bills.groupby(bills[0]).sort_values(ascending=False)[:5].plot.bar()
