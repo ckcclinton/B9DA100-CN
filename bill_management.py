@@ -54,19 +54,25 @@ def most_popular_company(bills):
 def highest_bill(bills):
     with open('bills.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
-        credit_bill_list = []
-        debit_bill_list = []
+        bill_list = []
+        card_type_list = []
         for row in csv_reader:
             for column, item in enumerate(row):
-                if column == 5 and column[6] == 'credit':
-                    converted_credit_bill = float(item)
-                    credit_bill_list.append(converted_credit_bill)
-                if column == 5 and column[6] == 'debit':
-                    converted_debit_bill = float(item)
-                    debit_bill_list.append(converted_debit_bill)
-        max_credit_bill = max(credit_bill_list)
-        max_debit_bill = max(debit_bill_list)
-        print('Highest credit & debit bill to date is: {0}'.format(max_credit_bill).format(max_debit_bill))
+                if column == 'amount':
+                    converted_bill = float(item)
+                    bill_list.append(converted_bill)
+                if column == 'type':
+                    card_type_list.append(item.strip())
+        card_bill_tuple = list(zip(card_type_list, bill_list))
+        credit_bill_list = []
+        debit_bill_list = []
+        for key, value in card_bill_tuple:
+            if key == 'credit':
+                credit_bill_list.append(value)
+            elif key == 'debit':
+                debit_bill_list.append(value)
+        print('Highest credit bill: {}'.format(max(credit_bill_list)))
+        print('Highest debit bill: {}'.format(max(debit_bill_list)))
 
 def plot_company(bills):
     bills.groupby('provider').sort_values(ascending=False)[:5].plot.bar()
