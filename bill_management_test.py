@@ -15,7 +15,7 @@ class TestBillManagement(unittest.TestCase):
         self.assertEqual(25, len(bills))
         self.assertEqual('Electric Ireland', bills[1][0])
         self.assertEqual('credit', bills[20][6])
-        self.assertEqual(' credit', bills[24][6])
+        self.assertEqual('credit', bills[23][6])
         
     def test_write_bills(self):
         bills = read_bills()
