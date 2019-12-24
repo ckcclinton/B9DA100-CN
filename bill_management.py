@@ -29,7 +29,7 @@ def most_popular_company(bills):
         for row in csv_reader:
             for column, item in enumerate(row):
                 if column == 0:
-                    company_list.append(column)
+                    company_list.append(item)
         max_company = max(company_list)
         print('Most popular company is: ', max_company)
 
