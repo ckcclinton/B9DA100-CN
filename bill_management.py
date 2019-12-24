@@ -78,12 +78,17 @@ def highest_bill(bills):
 
 def plot_company(bills):
     bills = pandas.read_csv('bills.csv')
-    bills['provider'].value_counts().sort_index(ascending=True).plot.barh()
+    bills['provider'].value_counts().sort_values(ascending=True).plot.barh()
     plt.show()
     
 def plot_billdate(bills):
     bills = pandas.read_csv('bills.csv')
-    bills.drop(['month'], axis=1).plot.line(title='Bills by date')
+    bills['year'].value_counts().sort_index(ascending=True).plot.bar()
+    plt.show()
+    
+def plot_avgspend(bills):
+    bills = pandas.read_csv('bills.csv')
+    bills.groupby("year").amount.mean().sort_index(ascending=True).plot.bar()
     plt.show()
     
 def display_submenu():
@@ -109,7 +114,7 @@ def subprocess_choice(bills):
         if choice == '5':
             count_bills(bills)
         if choice == '6':
-            print('Average Spend by Date')
+            plot_avgspend(bills)
         if choice == '7':
             print('Average Time b/e Bills')
         choice = input('Please enter an option:')
