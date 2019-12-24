@@ -4,7 +4,7 @@ Created on Wed Dec  4 18:40:08 2019
 
 @author: clintonngan
 """
-import pandas, csv, datatable
+import pandas, csv
 
 def read_bills():
     return [[col.strip() for col in line.strip().split(',')] for line in open('bills.csv') if len(line) > 1]
@@ -23,9 +23,9 @@ def display_menu():
     print('1: View Bills\n2: Insert a Bill\n3: Reports\n4: T&Cs\n5: Exit')
 
 def summary(bills):
-    #text_csv=pandas.read_csv('bills.csv')
-    #df=pandas.DataFrame(text_csv)
-    #print(df.describe())
+    text_csv=pandas.read_csv('bills.csv')
+    df=pandas.DataFrame(text_csv)
+    df.groupby('provider')
     
 def most_popular_company(bills):
     with open('bills.csv') as csv_file:
@@ -57,7 +57,7 @@ def highest_bill(bills):
 
 def plot_company(bills):
     for bill in bills:
-        bills.groupby(bill[0]).sort_values(ascending=False)[:5].plot.bar()
+        bills.groupby('provider').sort_values(ascending=False)[:5].plot.bar()
     
 def display_submenu():
     print('1: Summary\n2: Top Popular Companies\n3: Bills by Date\n4: Highest Amount\n5: Total Bills\n6: Average Spend by Date\n7: Average Time b/e Bills\n8: Exit')
