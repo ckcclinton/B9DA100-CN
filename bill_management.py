@@ -48,7 +48,7 @@ def most_popular_company(bills):
             for column, item in enumerate(row):
                 if column == 0:
                     company_list.append(item)
-        max_company = max(company_list)
+        max_company = max(company_list,key=company_list.count)
         print('Most popular company is: ', max_company)
 
 def highest_bill(bills):
