@@ -42,9 +42,11 @@ def summary(bills):
 
 def date_col(bills):
     df = pandas.read_csv('bills.csv', skipinitialspace=True)
+    tran_date = []
     df['transaction_date'] = df.year.astype(str) +'-'+ df.month.astype(str) +'-'+ df.day.astype(str)
     df['transaction_date'] = pandas.to_datetime(df['transaction_date'])
-    print(df)
+    tran_date.append(df['transaction_date'])
+    print(tran_date)
 
 def most_popular_company(bills):
     with open('bills.csv') as csv_file:
