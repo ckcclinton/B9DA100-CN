@@ -29,8 +29,15 @@ def insert_bills(bills):
                 continue
 
 def count_bills(bills):
-    row_count = sum(1 for row in bills)
-    print('Bills to date: ', row_count)
+    count = 0
+    for item in bills:
+        count = count + 1
+    print('Bills to Date: ',count)
+    
+def count_pie(bills):
+    bills = pandas.read_csv('bills.csv')
+    bills['type'].value_counts().sort_values(ascending=True).plot.pie(title='Payment type')
+    plt.show()
         
 def display_menu():
     print('Hello, Welcome to the Bill Management company')
@@ -90,7 +97,7 @@ def plot_company(bills):
     
 def plot_billdate(bills):
     bills = pandas.read_csv('bills.csv')
-    bills['year'].value_counts().sort_index(ascending=True).plot.bar(title='# of bills by year')
+    bills['year'].value_counts().sort_index().plot.line(title='# of bills by year')
     plt.show()
     bills.plot.scatter(x='month', y='amount', title='Scatter amount vs month')
     plt.show()
@@ -121,6 +128,7 @@ def subprocess_choice(bills):
         if choice == '4':
             highest_bill(bills)
         if choice == '5':
+            count_pie(bills)
             count_bills(bills)
         if choice == '6':
             plot_avgspend(bills)
