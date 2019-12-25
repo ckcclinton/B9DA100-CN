@@ -39,7 +39,13 @@ def summary(bills):
     fields = ['year', 'amount', 'type']
     df = pandas.read_csv('bills.csv', skipinitialspace=True, usecols=fields)
     print(df.groupby(['year','type']).sum())
-    
+
+def date_col(bills):
+    df = pandas.read_csv('bills.csv', skipinitialspace=True)
+    df['transaction_date'] = df.year.astype(str) +'-'+ df.month.astype(str) +'-'+ df.day.astype(str)
+    df['transaction_date'] = pandas.to_datetime(df['transaction_date'])
+    print(df)
+
 def most_popular_company(bills):
     with open('bills.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
@@ -130,7 +136,7 @@ def process_choice(bills):
         if choice == '3':
             subprocess_choice(bills)
         if choice == '4':
-            print("Read T&Cs")
+            date_col(bills)
         choice = input('Please enter an option:')
         
 
