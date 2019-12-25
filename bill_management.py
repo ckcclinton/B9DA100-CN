@@ -118,8 +118,11 @@ def subprocess_choice(bills):
         if choice == '7':
             print('Average Time b/e Bills')
         choice = input('Please enter an option:')
+    if choice == '8':
+        process_choice(bills)
 
 def process_choice(bills):
+    display_menu()
     choice = input('Please enter an option:')
     while choice != '5':
         if choice == '1':
@@ -135,7 +138,6 @@ def process_choice(bills):
 
 def main():
     bills = read_bills()
-    display_menu()
     process_choice(bills)
     
 if __name__ == '__main__':
