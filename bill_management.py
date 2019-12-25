@@ -134,7 +134,6 @@ def subprocess_choice(bills):
             highest_bill(bills)
         if choice == '5':
             count_pie(bills)
-            count_pie_year(bills)
             count_bills(bills)
         if choice == '6':
             plot_avgspend(bills)
