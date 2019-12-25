@@ -102,7 +102,7 @@ def plot_company(bills):
     
 def plot_billdate(bills):
     bills = pandas.read_csv('bills.csv')
-    bills['year'].value_counts().sort_index().plot.line(title='# of bills by year')
+    bills['year'].value_counts().sort_index().plot.bar(title='# of bills by year')
     plt.show()
     bills.plot.scatter(x='month', y='amount', title='Scatter amount vs month')
     plt.show()
