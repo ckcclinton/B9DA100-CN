@@ -36,6 +36,9 @@ def display_menu():
     print('1: View Bills\n2: Insert a Bill\n3: Reports\n4: T&Cs\n5: Exit')
 
 def summary(bills):
+    year_list = []
+    credit_list = []
+    debit_list = []
     text_csv=pandas.read_csv('bills.csv')
     df=pandas.DataFrame(text_csv)
     grouped_df = df.groupby('year')
@@ -134,8 +137,6 @@ def process_choice(bills):
         if choice == '4':
             print("Read T&Cs")
         choice = input('Please enter an option:')
-    if choice == '5':
-        return None
         
 
 def main():
