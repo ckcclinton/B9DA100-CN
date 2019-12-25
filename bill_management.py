@@ -38,6 +38,11 @@ def count_pie(bills):
     bills = pandas.read_csv('bills.csv')
     bills['type'].value_counts().sort_values(ascending=True).plot.pie(title='# of Bills by payment type')
     plt.show()
+    
+def count_pie_year(bills):
+    bills = pandas.read_csv('bills.csv')
+    bills['year'].value_counts().sort_values(ascending=True).plot.pie(title='# of Bills by year')
+    plt.show()
         
 def display_menu():
     print('Hello, Welcome to the Bill Management company')
@@ -129,6 +134,7 @@ def subprocess_choice(bills):
             highest_bill(bills)
         if choice == '5':
             count_pie(bills)
+            count_pie_year(bills)
             count_bills(bills)
         if choice == '6':
             plot_avgspend(bills)
