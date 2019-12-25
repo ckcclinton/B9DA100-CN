@@ -4,6 +4,7 @@ Created on Wed Dec  4 18:40:08 2019
 
 @author: clintonngan
 """
+from datetime import datetime, timedelta
 import pandas, csv, matplotlib.pyplot as plt
 
 def read_bills():
@@ -40,7 +41,7 @@ def summary(bills):
     df = pandas.read_csv('bills.csv', skipinitialspace=True, usecols=fields)
     print(df.groupby(['year','type']).sum())
 
-def date_col(bills):
+def avgtime_bill(bills):
     df = pandas.read_csv('bills.csv', skipinitialspace=True)
     tran_date = []
     df['transaction_date'] = df.year.astype(str) +'-'+ df.month.astype(str) +'-'+ df.day.astype(str)
@@ -138,7 +139,7 @@ def process_choice(bills):
         if choice == '3':
             subprocess_choice(bills)
         if choice == '4':
-            date_col(bills)
+            avgtime_bill(bills)
         choice = input('Please enter an option:')
         
 
