@@ -36,14 +36,9 @@ def display_menu():
     print('1: View Bills\n2: Insert a Bill\n3: Reports\n4: T&Cs\n5: Exit')
 
 def summary(bills):
-    year_list = []
-    credit_list = []
-    debit_list = []
-    text_csv=pandas.read_csv('bills.csv')
-    df=pandas.DataFrame(text_csv)
-    grouped_df = df.groupby('year')
-    for key, item in grouped_df:
-        print(grouped_df.get_group(key), "\n")
+    fields = ['year', 'amount', 'type']
+    df = pandas.read_csv('bills.csv', skipinitialspace=True, usecols=fields)
+    print(df.groupby(['year','type']).sum())
     
 def most_popular_company(bills):
     with open('bills.csv') as csv_file:
