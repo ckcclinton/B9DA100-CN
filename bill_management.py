@@ -21,7 +21,7 @@ def insert_bills(bills):
             amount = input('Please enter the bill amount: ')
             card_type = input('Please enter the card Type (debit or credit only!): ')
             csv_writer.writerow([provider, customer, year, month, day, amount, card_type])
-            reply = str(input('Do you still want to key in the transaction for another user? (y/n) ')).lower().strip()
+            reply = str(input('Do you still want to key in the transaction for another bill? (y/n) ')).lower().strip()
             if reply[0] == 'n':
                 break
             elif reply[0] == 'y':
