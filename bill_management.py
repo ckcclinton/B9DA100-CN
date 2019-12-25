@@ -27,7 +27,7 @@ def insert_bills(bills):
                 break
             elif reply[0] == 'y':
                 continue
-        
+
 def count_bills(bills):
     row_count = sum(1 for row in bills)
     print('Bills to date: ', row_count)
@@ -91,6 +91,8 @@ def plot_company(bills):
 def plot_billdate(bills):
     bills = pandas.read_csv('bills.csv')
     bills['year'].value_counts().sort_index(ascending=True).plot.bar(title='# of bills by year')
+    plt.show()
+    bills.plot.scatter(x='month', y='amount', title='Scatter amount vs month')
     plt.show()
     
 def plot_avgspend(bills):
