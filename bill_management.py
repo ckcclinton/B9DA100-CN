@@ -134,6 +134,8 @@ def process_choice(bills):
         if choice == '4':
             print("Read T&Cs")
         choice = input('Please enter an option:')
+    if choice == '5':
+        return None
         
 
 def main():
