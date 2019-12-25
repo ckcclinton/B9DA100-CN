@@ -12,7 +12,7 @@ class TestBillManagement(unittest.TestCase):
     
     def test_read_bills(self):
         bills = read_bills()
-        self.assertEqual(26, len(bills))
+        self.assertEqual(33, len(bills))
         self.assertEqual('Electric Ireland', bills[1][0])
         self.assertEqual('credit', bills[20][6])
         self.assertEqual('credit', bills[23][6])
@@ -20,7 +20,7 @@ class TestBillManagement(unittest.TestCase):
     def test_write_bills(self):
         bills = read_bills()
         bills = read_bills()
-        self.assertEqual(26, len(bills))
+        self.assertEqual(33, len(bills))
         self.assertEqual('Electric Ireland', bills[1][0])
         self.assertEqual('credit', bills[20][6])
         
