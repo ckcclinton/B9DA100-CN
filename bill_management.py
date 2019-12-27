@@ -108,7 +108,7 @@ def plot_billdate(bills):
     bills.plot.bar(x='month', y='amount', title='Scatter amount vs month')
     plt.show()
     
-def plot_avgspend(bills):
+def plot_avgspend_year(bills):
     bills = pandas.read_csv('bills.csv')
     show_whole_chart = str(input('Do you want the entire chart? (y/n): ').lower().strip())
     if show_whole_chart[0] == 'y':
@@ -118,6 +118,18 @@ def plot_avgspend(bills):
         year_input = int(input('Please enter the year: '))
         bills = bills.loc[bills['year'] == year_input]
         bills.groupby("year").amount.mean().sort_index(ascending=True).plot.bar(title='Average spend by year')
+        plt.show()
+        
+def plot_avgspend_month(bills):
+    bills = pandas.read_csv('bills.csv')
+    show_whole_chart = str(input('Do you want the entire chart? (y/n): ').lower().strip())
+    if show_whole_chart[0] == 'y':
+        bills.groupby("month").amount.mean().sort_index(ascending=True).plot.bar(title='Average spend by month')
+        plt.show()
+    elif show_whole_chart[0] == 'n':
+        year_input = int(input('Please enter the year: '))
+        bills = bills.loc[bills['year'] == year_input]
+        bills.groupby("month").amount.mean().sort_index(ascending=True).plot.bar(title='Average spend by month for year: {}'.format(year_input))
         plt.show()
     #bills = pandas.read_csv('bills.csv')
     #year_select = input('Please select year: ')
@@ -150,7 +162,8 @@ def subprocess_choice(bills):
             count_pie(bills)
             count_bills(bills)
         if choice == '6':
-            plot_avgspend(bills)
+            plot_avgspend_year(bills)
+            plot_avgspend_month(bills)
         if choice == '7':
             print('Average Time b/e Bills')
         choice = input('Please enter an option:')
