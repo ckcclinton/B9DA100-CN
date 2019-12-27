@@ -123,10 +123,10 @@ def plot_avgspend_year(bills):
 def plot_avgspend_month(bills):
     bills = pandas.read_csv('bills.csv')
     show_whole_chart = str(input('Do you want the MONTHLY chart for a particular year? (y/n): ').lower().strip())
-    if show_whole_chart[0] == 'y':
+    if show_whole_chart[0] == 'n':
         bills.groupby("month").amount.mean().sort_index(ascending=True).plot.bar(title='Average spend by month')
         plt.show()
-    elif show_whole_chart[0] == 'n':
+    elif show_whole_chart[0] == 'y':
         year_input = int(input('Please enter the year: '))
         bills = bills.loc[bills['year'] == year_input]
         bills.groupby("month").amount.mean().sort_index(ascending=True).plot.bar(title='Average spend by month for year {}'.format(year_input))
