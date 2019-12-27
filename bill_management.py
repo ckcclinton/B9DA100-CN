@@ -110,7 +110,7 @@ def plot_billdate(bills):
     
 def plot_avgspend_year(bills):
     bills = pandas.read_csv('bills.csv')
-    show_whole_chart = str(input('Do you want the entire chart by year? (y/n): ').lower().strip())
+    show_whole_chart = str(input('Do you want the entire chart with all years? (y/n): ').lower().strip())
     if show_whole_chart[0] == 'y':
         bills.groupby("year").amount.mean().sort_index(ascending=True).plot.bar(title='Average spend by year')
         plt.show()
