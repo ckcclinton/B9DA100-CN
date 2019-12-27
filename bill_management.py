@@ -54,7 +54,7 @@ def summary(bills):
     print(df.groupby(['year','type']).sum())
 
 def avgtime_bill(bills):
-    df = pandas.read_csv('new_bills.csv')
+    df = pandas.read_csv('bills.csv')
     df['transaction_date'] = df.year.astype(str) + '/' +  df.month.astype(str) + '/' + df.day.astype(str)
     df['transaction_date'] = pandas.to_datetime(df['transaction_date'])
     df = df.sort_values(by=['transaction_date'])
@@ -65,6 +65,11 @@ def avgtime_bill(bills):
         
     second_time.pop(0)
     df = df[:-1]
+    df['second_time'] = second_time
+    df['time_delta'] = df['second_time'] - df['transaction_date']
+    df['time_delta'] = df['time_delta'].dt.days.astype('int16')
+    avg_time_delta = df['time_delta'].sum() / len(df)
+    print('Average days difference between bills: {:.2f} days'.format(avg_time_delta))
 
 def most_popular_company(bills):
     with open('bills.csv') as csv_file:
@@ -170,7 +175,7 @@ def subprocess_choice(bills):
             plot_avgspend_year(bills)
             plot_avgspend_month(bills)
         if choice == '7':
-            print('Average Time b/e Bills')
+            avgtime_bill(bills)
         choice = input('Please enter an option:')
     if choice == '8':
         process_choice(bills)
