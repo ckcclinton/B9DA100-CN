@@ -19,8 +19,8 @@ def insert_bills(bills):
             year = input('Please enter the year of transaction: ')
             month = input('Please enter the month of transaction: ')
             day = input('Please enter the day of transaction: ')
-            amount = input('Please enter the bill amount: ')
-            card_type = input('Please enter the card Type (debit or credit only!): ')
+            amount = float(input('Please enter the bill amount: '))
+            card_type = input('Please enter the card Type (debit or credit only!): ').strip().lower()
             csv_writer.writerow([provider, customer, year, month, day, amount, card_type])
             reply = str(input('Do you still want to key in the transaction for another bill? (y/n) ')).lower().strip()
             if reply[0] == 'n':
@@ -75,14 +75,15 @@ def most_popular_company(bills):
 def highest_bill(bills):
     with open('bills.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
+        next(csv_reader, None)
         bill_list = []
         card_type_list = []
         for row in csv_reader:
             for column, item in enumerate(row):
-                if column == 'amount':
+                if column == 5:
                     converted_bill = float(item)
                     bill_list.append(converted_bill)
-                if column == 'type':
+                if column == 6:
                     card_type_list.append(item.strip())
         card_bill_tuple = list(zip(card_type_list, bill_list))
         credit_bill_list = []
@@ -104,7 +105,7 @@ def plot_billdate(bills):
     bills = pandas.read_csv('bills.csv')
     bills['year'].value_counts().sort_index().plot.bar(title='# of bills by year')
     plt.show()
-    bills.plot.scatter(x='month', y='amount', title='Scatter amount vs month')
+    bills.plot.bar(x='month', y='amount', title='Scatter amount vs month')
     plt.show()
     
 def plot_avgspend(bills):
