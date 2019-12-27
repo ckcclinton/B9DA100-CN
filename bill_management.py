@@ -54,12 +54,17 @@ def summary(bills):
     print(df.groupby(['year','type']).sum())
 
 def avgtime_bill(bills):
-    df = pandas.read_csv('bills.csv', skipinitialspace=True)
-    tran_date = []
-    df['transaction_date'] = df.year.astype(str) +'-'+ df.month.astype(str) +'-'+ df.day.astype(str)
+    df = pandas.read_csv('new_bills.csv')
+    df['transaction_date'] = df.year.astype(str) + '/' +  df.month.astype(str) + '/' + df.day.astype(str)
     df['transaction_date'] = pandas.to_datetime(df['transaction_date'])
-    tran_date.append(df['transaction_date'])
-    print(tran_date)
+    df = df.sort_values(by=['transaction_date'])
+    second_time = []
+    
+    for index, row in df.iterrows():
+        second_time.append(row['transaction_date'])
+        
+    second_time.pop(0)
+    df = df[:-1]
 
 def most_popular_company(bills):
     with open('bills.csv') as csv_file:
