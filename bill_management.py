@@ -141,12 +141,6 @@ def plot_avgspend_month(bills):
         bills = bills.loc[bills['year'] == year_input]
         bills.groupby("month").amount.mean().sort_index(ascending=True).plot.bar(title='Average spend by month for year {}'.format(year_input))
         plt.show()
-    #bills = pandas.read_csv('bills.csv')
-    #year_select = input('Please select year: ')
-    #bills.groupby("year").amount.mean().sort_index(ascending=True).plot.bar(title='Average spend by year')
-    #plt.show()
-    #bills.groupby("month").amount.mean().sort_index(ascending=True).plot.bar(title='Average spend by year')
-    #plt.show()
     
 def display_submenu():
     print('1: Summary\n2: Top Popular Companies\n3: Bills by Date\n4: Highest Amount\n5: Total Bills\n6: Average Spend by Date\n7: Average Time b/e Bills\n8: Exit')
