@@ -35,12 +35,13 @@ def count_bills(bills):
     
 def count_pie(bills):
     bills = pandas.read_csv('bills.csv')
-    bills['type'].value_counts().sort_values(ascending=True).plot.pie(title='# of Bills by payment type')
+    target_value_counts = bills['type'].value_counts()
+    target_value_counts.value_counts().sort_values(ascending=True).plot.pie(autopct='%1.1f%%', title='# of Bills by payment type')
     plt.show()
     
 def count_pie_year(bills):
     bills = pandas.read_csv('bills.csv')
-    bills['year'].value_counts().sort_values(ascending=True).plot.pie(title='# of Bills by year')
+    bills['year'].value_counts().sort_values(ascending=True).plot.pie(title='# of Bills by year',autopct='%1.0f%%')
     plt.show()
         
 def display_menu():
