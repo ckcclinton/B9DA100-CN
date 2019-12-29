@@ -4,7 +4,6 @@ Created on Wed Dec  4 18:40:08 2019
 
 @author: clintonngan
 """
-from datetime import datetime, timedelta
 import pandas, csv, matplotlib.pyplot as plt
 
 def read_bills():
@@ -115,7 +114,7 @@ def plot_billdate(bills):
     bills = pandas.read_csv('bills.csv')
     bills['year'].value_counts().sort_index().plot.bar(title='# of bills by year')
     plt.show()
-    bills.plot.bar(x='month', y='amount', title='Scatter amount vs month')
+    bills['month'].value_counts().sort_index().plot.bar(title='# of bills by month')
     plt.show()
     
 def plot_avgspend_year(bills):
