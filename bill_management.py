@@ -184,7 +184,7 @@ def process_choice(bills):
         if choice == '3':
             subprocess_choice(bills)
         if choice == '4':
-            avgtime_bill(bills)
+            print("Never gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you")
         choice = input('Please enter an option:')
         
 
