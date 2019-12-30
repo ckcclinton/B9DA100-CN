@@ -31,18 +31,26 @@ def count_bills(bills):
     count = 0
     for item in bills:
         count = count + 1
-    print('Bills to Date: ',count)
+    print('Bills to Date: ',count-1)
     
-def count_pie(bills):
+#def count_pie():
+    #bills = pandas.read_csv('bills.csv')
+    #target_value_counts = bills['type'].value_counts()
+    #target_value_counts.value_counts().plot.pie(autopct='%1.1f%%', title='# of Bills by payment type')
+    #plt.show()
+    
+def pie_chart():
     bills = pandas.read_csv('bills.csv')
-    target_value_counts = bills['type'].value_counts()
-    target_value_counts.value_counts().sort_values(ascending=True).plot.pie(autopct='%1.1f%%', title='# of Bills by payment type')
+    target = bills['type']
+    target_value_counts = target.value_counts()
+    target_value_counts.plot.pie(autopct='%1.1f%%')
+    plt.title('Distribution of Card Type')
     plt.show()
     
-def count_pie_year(bills):
-    bills = pandas.read_csv('bills.csv')
-    bills['year'].value_counts().sort_values(ascending=True).plot.pie(title='# of Bills by year',autopct='%1.0f%%')
-    plt.show()
+#def count_pie_year(bills):
+    #bills = pandas.read_csv('bills.csv')
+    #bills['year'].value_counts().sort_values(ascending=True).plot.pie(title='# of Bills by year',autopct='%1.0f%%')
+    #plt.show()
         
 def display_menu():
     print('Hello, Welcome to the Bill Management company')
@@ -154,7 +162,7 @@ def subprocess_choice(bills):
     #choice = input('Please enter an option:')
     #while choice != '8':
     while (1):
-        choice = input('Please enter an option:')
+        choice = input('(SUB-MENU) Please enter an option:')
         if choice == '1':
             summary(bills)
         if choice == '2':
@@ -165,7 +173,8 @@ def subprocess_choice(bills):
         if choice == '4':
             highest_bill(bills)
         if choice == '5':
-            count_pie(bills)
+            pie_chart()
+            #count_pie()
             count_bills(bills)
         if choice == '6':
             plot_avgspend_year(bills)
@@ -182,7 +191,7 @@ def process_choice(bills):
     # choice = input('Please enter an option:')
     #while choice != '5':
     while (1):
-        choice = input('Please enter an option:')
+        choice = input('(MAIN MENU) Please enter an option:')
         if choice == '1':
             view_bills(bills)
         if choice == '2':
