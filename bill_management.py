@@ -11,7 +11,7 @@ def read_bills():
 
 def insert_bills(bills):
     with open('bills.csv', 'a') as csv_file:
-        csv_writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL) 
+        csv_writer = csv.writer(csv_file, newline='')
         while (1):
             provider = input('Please enter the name of the provider: ')
             customer = input('Please enter the name of the customer: ')
@@ -59,7 +59,7 @@ def avgtime_bill(bills):
     df['transaction_date'] = pandas.to_datetime(df['transaction_date'])
     df = df.sort_values(by=['transaction_date'])
     second_time = []
-    
+
     for index, row in df.iterrows():
         second_time.append(row['transaction_date'])
         
