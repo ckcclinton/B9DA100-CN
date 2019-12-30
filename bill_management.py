@@ -10,8 +10,8 @@ def read_bills():
     return [[col.strip() for col in line.strip().split(',')] for line in open('bills.csv') if len(line) > 1]
 
 def insert_bills(bills):
-    with open('bills.csv', 'a') as csv_file:
-        csv_writer = csv.writer(csv_file, newline='')
+    with open('bills.csv', 'a', newline='') as csv_file:
+        csv_writer = csv.writer(csv_file)
         while (1):
             provider = input('Please enter the name of the provider: ')
             customer = input('Please enter the name of the customer: ')
