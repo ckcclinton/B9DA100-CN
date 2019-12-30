@@ -31,7 +31,6 @@ def count_bills(bills):
     count = 0
     for item in bills:
         count = count + 1
-    return count - 1
     print('Bills to Date: ',count-1)
     
 #def count_pie():
