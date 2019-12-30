@@ -151,8 +151,10 @@ def view_bills(bills):
 
 def subprocess_choice(bills):
     display_submenu()
-    choice = input('Please enter an option:')
-    while choice != '8':
+    #choice = input('Please enter an option:')
+    #while choice != '8':
+    while (1):
+        choice = input('Please enter an option:')
         if choice == '1':
             summary(bills)
         if choice == '2':
@@ -170,14 +172,17 @@ def subprocess_choice(bills):
             plot_avgspend_month(bills)
         if choice == '7':
             avgtime_bill(bills)
-        choice = input('Please enter an option:')
-    if choice == '8':
-        process_choice(bills)
+        if choice == '8':
+            #process_choice(bills)
+            break
+
 
 def process_choice(bills):
     display_menu()
-    choice = input('Please enter an option:')
-    while choice != '5':
+    # choice = input('Please enter an option:')
+    #while choice != '5':
+    while (1):
+        choice = input('Please enter an option:')
         if choice == '1':
             view_bills(bills)
         if choice == '2':
@@ -186,7 +191,9 @@ def process_choice(bills):
             subprocess_choice(bills)
         if choice == '4':
             print("Never gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you")
-        choice = input('Please enter an option:')
+        if choice == '5':
+            break
+        #choice = input('Please enter an option:')
         
 
 def main():
